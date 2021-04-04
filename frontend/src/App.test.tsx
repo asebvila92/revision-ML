@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import App, { Todo, TodoTask } from "./App";
+import App from "./Home";
 
 configure({ adapter: new Adapter() });
 

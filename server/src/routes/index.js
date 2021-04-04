@@ -3,7 +3,8 @@ let router = express.Router();
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
-  let languages = [
+  let data = {};
+  data.responseContent = [
     {
       language: "Spanish",
     },
@@ -14,7 +15,7 @@ router.get("/", (req, res, next) => {
       langauge: "German",
     },
   ];
-  res.json(languages);
+  res.json(data);
 });
 
 export default router;

@@ -1,20 +1,13 @@
 import express from "express";
 let router = express.Router();
 
+type Data = {
+  text: string;
+};
+
 /* GET home page. */
 router.get("/", (req, res, next) => {
-  let data = {};
-  data.responseContent = [
-    {
-      language: "Spanish",
-    },
-    {
-      language: "French",
-    },
-    {
-      langauge: "German",
-    },
-  ];
+  let data: Data = { text: "hello!" };
   res.json(data);
 });
 

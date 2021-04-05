@@ -13,6 +13,9 @@
 /server/build
 /frontend/build
 
+#ts server
+/server/dist
+
 # misc
 .DS_Store
 .env.local

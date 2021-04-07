@@ -1,14 +1,9 @@
-import express from "express";
-let router = express.Router();
+import { Application } from "express";
+import { productController } from "../controller";
 
-type Data = {
-  text: string;
+/* all routes here with controller name in the slash */
+const routes = (app: Application) => {
+  app.use("/product", productController);
 };
 
-/* GET home page. */
-router.get("/", (req, res, next) => {
-  let data: Data = { text: "hello!" };
-  res.json(data);
-});
-
-export default router;
+export default routes;

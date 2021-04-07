@@ -1,6 +1,7 @@
 import express from "express";
-import router from "./routes/index";
-let app = express();
+import routes from "./routes";
+
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,8 +13,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", router);
+routes(app);
 
 app.listen(3001, function () {
-  console.log("Example app listening on port 3001!");
+  console.log("listening on port 3001!");
 });

@@ -1,9 +1,9 @@
-import { Data } from "../models/product";
+import { Data } from "../models";
 
 /* all of my product logic */
 export const getProduct = (): Data => {
   const data: Data = {
-    text: "Test Success!",
+    text: "Test Successs!",
   };
   return data;
 };

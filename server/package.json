@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "marketplace server",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asebvila92/revision-ML.git"
+  },
   "scripts": {
     "start": "babel-node dist/server.js",
     "tsc": "tsc",

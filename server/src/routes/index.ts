@@ -1,9 +1,9 @@
 import { Application } from "express";
-import { productController } from "../controller";
+import { itemController } from "../controller";
 
 /* all routes here with controller name in the slash */
-const routes = (app: Application) => {
-  app.use("/product", productController);
+const routes = (app: Application): void => {
+  app.use("/api/items", itemController);
 };
 
 export default routes;

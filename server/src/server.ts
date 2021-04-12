@@ -1,5 +1,7 @@
 import express from "express";
 import routes from "./routes";
+import notFoundRoute from "./middleware/404";
+import errorMiddleware from "./middleware/error";
 
 const app = express();
 
@@ -15,6 +17,10 @@ app.use((req, res, next) => {
 
 routes(app);
 
+app.use(notFoundRoute);
+app.use(errorMiddleware);
+
 app.listen(3001, function () {
+  // eslint-disable-next-line no-console
   console.log("listening on port 3001!");
 });

@@ -1,4 +1,4 @@
-import productController from "./products";
+import itemController from "./Item";
 
-export { productController };
+export { itemController };
 /* here are all my controllers. Unique point to access to my controllers  */

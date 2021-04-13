@@ -10,7 +10,10 @@ export const searchML = async (params) => {
 
 export const getItemByIdML = async (id: string) => {
   const url = `items/${id}`;
-  const itemResult: AxiosResponse<ItemResultML> = await apiML.get(url);
-  const descriptionResult: AxiosResponse<descriptionResultML> = await apiML.get(`${url}/description`);
-  return { ...itemResult.data, ...descriptionResult.data };
+
+  const itemPromise: Promise<AxiosResponse<ItemResultML>> = apiML.get(url);
+  const descriptionPromise: Promise<AxiosResponse<descriptionResultML>> = apiML.get(`${url}/description`);
+
+  const result = await Promise.all([itemPromise, descriptionPromise]);
+  return { ...result[0].data, ...result[1].data };
 };

@@ -1,1 +1,1 @@
-export * from './productsConstants'
+export * from "./productsConstants";

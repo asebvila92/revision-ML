@@ -1,0 +1,27 @@
+@import "../../scss/variables.scss";
+
+.Breadcrumb {
+  display: flex;
+  margin: $m16p 0;
+  padding-left: 0;
+
+  .breadcrumb-item {
+    display: flex;
+    color: $medium-gray;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  li {
+    list-style: none;
+    margin-right: 7px;
+  }
+
+  li:last-child {
+    font-weight: bold;
+  }
+
+  span {
+    margin-right: 7px;
+  }
+}

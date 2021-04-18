@@ -5,6 +5,10 @@ export type ApiResponse<T> = {
 };
 
 //--------------------ML api types--------------------------
+export type ErrorApiML = {
+  message: string;
+  status: number;
+};
 
 export type SearchResultML = {
   results: [];
@@ -21,7 +25,8 @@ export type ItemResultML = {
   title: string;
   price: number;
   currency_id: string;
-  pictures: PictureML[];
+  pictures?: PictureML[];
+  thumbnail?: string;
   condition: string;
   category_id: string;
   shipping: {

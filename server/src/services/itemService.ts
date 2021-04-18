@@ -1,5 +1,5 @@
 import { searchML, getItemByIdML } from "../data/apiML";
-import { CategoryML, FilterML } from "../data/apiML/types";
+import { CategoryML, FilterML, ItemResultML } from "../data/apiML/types";
 import { SearchResponse, Item, ItemResponse } from "../models";
 import { getCategoryFilter, getBreadcrumb, getAuthor } from "../utils/itemUtils";
 
@@ -12,6 +12,21 @@ const searchCategory = async (categoryId: string) => {
   const categoryFilter: FilterML = getCategoryFilter(filters);
   breadcrumb = getBreadcrumb(categoryFilter);
   return breadcrumb;
+};
+
+const processResultsSearch = (items: ItemResultML[]): Item[] => {
+  return items.map((item) => ({
+    id: item.id,
+    title: item.title,
+    price: {
+      amount: item.price,
+      currency: item.currency_id,
+      decimals: 0,
+    },
+    picture: item.thumbnail || "",
+    condition: item.condition,
+    free_shipping: item.shipping.free_shipping,
+  }));
 };
 
 export const searchItem = async (searchInput: string): Promise<SearchResponse> => {
@@ -41,7 +56,7 @@ export const searchItem = async (searchInput: string): Promise<SearchResponse> =
   }
 
   return {
-    items: resultSearch.results.slice(0, 4),
+    items: processResultsSearch(resultSearch.results.slice(0, 4)),
     categories: breadcrumb,
     author: getAuthor(),
   };
@@ -56,11 +71,12 @@ export const getItemById = async (id: string): Promise<ItemResponse> => {
     price: {
       amount: itemML.price,
       currency: itemML.currency_id,
+      decimals: 0,
     },
     picture: itemML.pictures[0]?.url || "",
     condition: itemML.condition,
-    freeShipping: itemML.shipping.free_shipping,
-    soldQuantity: itemML.sold_quantity,
+    free_shipping: itemML.shipping.free_shipping,
+    sold_quantity: itemML.sold_quantity,
     description: itemML.plain_text || "",
   };
 

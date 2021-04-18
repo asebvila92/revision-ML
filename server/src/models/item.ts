@@ -18,12 +18,13 @@ export type Item = {
   price: Price;
   picture: string;
   condition: string;
-  freeShipping: boolean;
-  soldQuantity: number;
+  free_shipping: boolean;
+  sold_quantity?: number;
   description?: string;
 };
 
 export type Price = {
   currency: string;
   amount: number;
+  decimals: number;
 };

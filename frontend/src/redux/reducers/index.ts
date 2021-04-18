@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import productReducer from "./productReducer";
+import itemReducer from "./itemReducer";
+import errorReducer from "./errorReducer";
 
 const getRootReducer = combineReducers({
-  productReducer,
+  itemReducer,
+  errorReducer,
 });
 
 export type RootState = ReturnType<typeof getRootReducer>;

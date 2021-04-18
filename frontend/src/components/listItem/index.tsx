@@ -1,34 +1,28 @@
 import React from "react";
 import { Item } from "../../redux/actions/types";
 import shipping from "../../assets/free-shipping.png";
+import { getAmount, getCondition, getCurrency } from "../../utils";
 import "./styles.scss";
 
 interface Props {
   item: Item;
+  onClickItem: (id: string) => void;
 }
 
-const ListItem: React.FC<Props> = ({ item }) => {
+const ListItem: React.FC<Props> = ({ item, onClickItem }) => {
   const { id, title, price, condition, picture, free_shipping } = item;
   const { amount, currency } = price;
 
-  const conditionValue = condition === "used" ? "Usado" : "Nuevo";
-  const moneyValue = currency === "ARS" ? "$" : "U$S";
-
-  const getAmount = () => {
-    const value = String(amount).replace(/\D/g, "");
-    return value === "" ? value : Number(value).toLocaleString("de-DE");
-  };
-
   return (
     <div className="ListItem">
-      <div className="container-item">
+      <div className="container-item" onClick={() => onClickItem(id)}>
         <div className="img-content">
           <img src={picture} alt="" />
         </div>
         <div className="info-content">
           <div className="item-price">
-            <span>{moneyValue}</span>
-            <span>{getAmount()}</span>
+            <span>{getCurrency(currency)}</span>
+            <span>{getAmount(amount)}</span>
             {free_shipping && <img src={shipping} alt="" />}
           </div>
           <div className="item-title">
@@ -37,7 +31,7 @@ const ListItem: React.FC<Props> = ({ item }) => {
         </div>
       </div>
       <div className="condition-content">
-        <span>{conditionValue}</span>
+        <span>{getCondition(condition)}</span>
       </div>
     </div>
   );

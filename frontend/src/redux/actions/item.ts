@@ -25,3 +25,17 @@ export const searchItem = (item: string) => async (dispatch: Dispatch) => {
     );
   }
 };
+
+export const getItemById = async (id: string) => {
+  const url = "items/";
+  try {
+    const { data }: AxiosResponse = await rest.get(`${url}${id}`);
+
+    if (data.errorCode) {
+      return { type: "request", code: data.errorCode, message: "" };
+    }
+    return data;
+  } catch (error) {
+    return { type: "request", code: 500, message: "Algo salio mal, intenta una nueva busqueda" };
+  }
+};

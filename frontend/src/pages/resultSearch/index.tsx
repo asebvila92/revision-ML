@@ -1,16 +1,23 @@
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
 import Breadcrumb from "../../components/breadcrumb";
 import ListItem from "../../components/listItem";
 import "./styles.scss";
 
-const ResultSearch = () => {
+const ResultSearch: React.FC<RouteComponentProps> = (props) => {
   const { search } = useSelector((state: RootState) => ({
     search: state.itemReducer.search,
   }));
-
   const { categories, items } = search;
+  const { history, location } = props;
+
+  const handleClickItem = (id: string) => {
+    history.push({
+      pathname: `${location.pathname}/${id}`,
+    });
+  };
 
   return (
     search && (
@@ -18,7 +25,7 @@ const ResultSearch = () => {
         <Breadcrumb categories={categories} />
         <div className="content">
           {items.map((item, key) => (
-            <ListItem item={item} key={key.toString()} />
+            <ListItem item={item} key={key.toString()} onClickItem={handleClickItem} />
           ))}
         </div>
       </div>
@@ -26,4 +33,4 @@ const ResultSearch = () => {
   );
 };
 
-export default ResultSearch;
+export default withRouter(ResultSearch);

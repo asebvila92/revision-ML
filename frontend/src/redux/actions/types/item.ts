@@ -5,6 +5,11 @@ export type Search = {
   items: Item[];
 };
 
+export type ResultGetItem = {
+  categories: Breadcrumb;
+  item: Item;
+};
+
 export type SearchItemAction = {
   type: "SEARCH_ITEM";
   data: Search;

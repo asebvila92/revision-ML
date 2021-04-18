@@ -1,0 +1,122 @@
+@import "../../scss/variables.scss";
+
+.ListItem {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid $light-gray;
+  color: $black-font;
+
+  .container-item {
+    display: flex;
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .img-content {
+    margin: $m16p;
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 4%;
+    }
+  }
+
+  .item-price {
+    display: flex;
+    flex-direction: row;
+    margin: $m32p 0px;
+
+    span {
+      color: $black-font;
+      font-size: 24px;
+    }
+
+    span:first-child {
+      margin-right: 3px;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      align-self: center;
+      margin-left: 5px;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .condition-content {
+    margin-right: 15%;
+    align-self: center;
+    margin-left: 5%;
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .img-content {
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 4%;
+      }
+    }
+
+    .item-price {
+      margin: $m16p 0;
+      span {
+        font-size: 17px;
+      }
+      img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .condition-content {
+      margin-right: 5%;
+      margin-left: 5%;
+      span {
+        font-size: 10px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    h3 {
+      font-size: 10px;
+    }
+    .condition-content {
+      span {
+        font-size: 8px;
+      }
+    }
+
+    .item-price {
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}

@@ -1,1 +1,11 @@
+.ResultSearch {
+  width: 100%;
 
+  .content {
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 2%;
+  }
+}

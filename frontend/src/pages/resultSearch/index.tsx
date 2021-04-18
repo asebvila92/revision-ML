@@ -1,21 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
-import { getProducts } from "../../redux/actions";
+import Breadcrumb from "../../components/breadcrumb";
+import ListItem from "../../components/listItem";
 import "./styles.scss";
 
-function ResultSearch() {
-  const dispatch = useDispatch();
-
-  const { products } = useSelector((state: RootState) => ({
-    products: state.productReducer.products,
+const ResultSearch = () => {
+  const { search } = useSelector((state: RootState) => ({
+    search: state.itemReducer.search,
   }));
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+  const { categories, items } = search;
 
-  return <div className="ResultSearch"></div>;
-}
+  return (
+    search && (
+      <div className="ResultSearch">
+        <Breadcrumb categories={categories} />
+        <div className="content">
+          {items.map((item, key) => (
+            <ListItem item={item} key={key.toString()} />
+          ))}
+        </div>
+      </div>
+    )
+  );
+};
 
 export default ResultSearch;

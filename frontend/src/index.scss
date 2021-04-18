@@ -1,4 +1,4 @@
-@import "./scss/colors.scss";
+@import "./scss/variables.scss";
 
 body {
   background-color: $light-gray;
@@ -10,6 +10,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app-content {
+  width: 76%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.content {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 4px;
+}
+
 button:focus,
 input:focus {
   outline: none;
@@ -19,9 +36,20 @@ input::placeholder {
   color: $medium-gray;
 }
 
+input:disabled {
+  background: #ccc;
+}
+
 button:hover {
   cursor: pointer;
 }
 button:active {
   opacity: 0.85;
+}
+
+@media only screen and (max-width: 480px) {
+  .app-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.scss";
 import { Breadcrumb as Categories } from "../../redux/actions/types";
 import "./styles.scss";
 
@@ -7,7 +6,7 @@ interface Props {
   categories: Categories;
 }
 
-const Breadcrumb: React.FC<Props> = ({ categories = [] }) => {
+const Breadcrumb = ({ categories = [] }: Props) => {
   const lastItem = categories.length - 1;
 
   const renderCategoryItem = (categoyName: string, key: number) => {
@@ -19,7 +18,11 @@ const Breadcrumb: React.FC<Props> = ({ categories = [] }) => {
     );
   };
 
-  return <ul className="Breadcrumb">{categories.map((cat, key) => renderCategoryItem(cat, key))}</ul>;
+  return (
+    <div>
+      <ul className="Breadcrumb">{categories.map((cat, key) => renderCategoryItem(cat, key))}</ul>
+    </div>
+  );
 };
 
 export default Breadcrumb;

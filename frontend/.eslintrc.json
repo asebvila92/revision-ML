@@ -20,6 +20,7 @@
     "quotes": [2, "double"],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "no-console": "warn",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/prop-types": "off"
   }
 }

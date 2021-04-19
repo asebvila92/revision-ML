@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -8,11 +9,14 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+const helmetContext = {};
 const store = createStore(rootReducer, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <HelmetProvider context={helmetContext}>
+        <App />
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

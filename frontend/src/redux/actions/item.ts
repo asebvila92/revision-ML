@@ -19,7 +19,8 @@ export const searchItem = (item: string) => async (dispatch: Dispatch) => {
         })
       );
     }
-    const action = { type: SEARCH_ITEM, data: data };
+    const allData = { ...data, term: item };
+    const action = { type: SEARCH_ITEM, data: allData };
     dispatch(action);
   } catch (error) {
     dispatch(

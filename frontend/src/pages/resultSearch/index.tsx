@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
@@ -22,6 +23,10 @@ const ResultSearch: React.FC<RouteComponentProps> = (props) => {
   return (
     search && (
       <div className="ResultSearch">
+        <Helmet>
+          <title>{`${search.term || ""} | Buscador`}</title>
+          <meta name="description" content="Busca el producto que quieras" />
+        </Helmet>
         <Breadcrumb categories={categories} />
         <div className="content">
           {items.map((item, key) => (

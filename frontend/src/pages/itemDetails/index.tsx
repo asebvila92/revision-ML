@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import Breadcrumb from "../../components/breadcrumb";
@@ -29,6 +30,10 @@ const ItemDetails = (props: RouteComponentProps<{ id: string }>) => {
   return (
     resultItem && (
       <div className="ItemDetails">
+        <Helmet>
+          <title>{`${resultItem.item.title || ""} | Buscador`}</title>
+          <meta name="description" content="Busca el producto que quieras" />
+        </Helmet>
         <Breadcrumb categories={resultItem.categories} />
         <div className="content">
           <div className="item-details">

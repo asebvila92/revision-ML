@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/reducers";
 import { cleanError } from "../../redux/actions";
@@ -15,7 +16,15 @@ const Home: React.FC = () => {
     };
   }, []);
 
-  return <div className="Home">{error.message}</div>;
+  return (
+    <div className="Home">
+      <Helmet>
+        <title>Buscador</title>
+        <meta name="description" content="Busca el producto que quieras" />
+      </Helmet>
+      {error.message}
+    </div>
+  );
 };
 
 export default Home;

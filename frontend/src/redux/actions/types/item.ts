@@ -1,6 +1,7 @@
 export type Breadcrumb = string[];
 
 export type Search = {
+  term?: string;
   categories: Breadcrumb;
   items: Item[];
 };

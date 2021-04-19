@@ -10,7 +10,7 @@ import "./styles.scss";
 
 const Finder: React.FC<RouteComponentProps> = (props) => {
   const { history, location } = props;
-  const [inputSearch, setInputSearch] = useState<string>("kawasaki zx10r");
+  const [inputSearch, setInputSearch] = useState<string>("");
   const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useDispatch();
 
@@ -63,8 +63,8 @@ const Finder: React.FC<RouteComponentProps> = (props) => {
           onChange={(event) => setInputSearch(event.target.value)}
           onKeyPress={(e) => (e.key === "Enter" ? handleSearch() : null)}
         />
-        <button>
-          <img src={searchImg} onClick={handleSearch} />
+        <button disabled={isDisabled} onClick={handleSearch}>
+          <img src={searchImg} alt="" />
         </button>
       </div>
     </header>

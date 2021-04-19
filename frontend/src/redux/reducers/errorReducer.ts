@@ -2,7 +2,7 @@ import { THROW_ERROR, CLEAN_ERROR } from "../constants";
 
 import { ErrorAction, ErrorReducerState } from "../actions/types";
 
-const initialState: ErrorReducerState = {
+export const initialState: ErrorReducerState = {
   type: "",
   message: "",
   code: 0,

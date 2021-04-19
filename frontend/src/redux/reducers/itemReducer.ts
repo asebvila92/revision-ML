@@ -3,7 +3,7 @@ import { SEARCH_ITEM } from "../constants";
 import { SearchItemAction } from "../actions/types";
 import { Search } from "../actions/types";
 
-interface ItemReducerState {
+export interface ItemReducerState {
   search: Search;
 }
 
@@ -11,7 +11,7 @@ const initialState: ItemReducerState = {
   search: { categories: [], items: [] },
 };
 
-const productReducer = (state = initialState, action: SearchItemAction): ItemReducerState => {
+const itemReducer = (state = initialState, action: SearchItemAction): ItemReducerState => {
   switch (action.type) {
     case SEARCH_ITEM:
       return {
@@ -23,4 +23,4 @@ const productReducer = (state = initialState, action: SearchItemAction): ItemRed
   }
 };
 
-export default productReducer;
+export default itemReducer;

@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { RootState } from "../../redux/reducers";
 import logo from "../../assets/logo-ml.png";
-import search from "../../assets/search.png";
+import searchImg from "../../assets/search.png";
 import { searchItem } from "../../redux/actions";
 import "./styles.scss";
 
 const Finder: React.FC<RouteComponentProps> = (props) => {
   const { history, location } = props;
-  const [inputSearch, setInputSearch] = useState<string>("iphone 11");
+  const [inputSearch, setInputSearch] = useState<string>("kawasaki zx10r");
+  const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useDispatch();
+
+  const { error } = useSelector((state: RootState) => ({
+    error: state.errorReducer,
+  }));
+
+  useEffect(() => {
+    if (location.pathname !== "/" && location.pathname !== "/items") {
+      setIsDisabled(true);
+    } else {
+      if (isDisabled) {
+        setIsDisabled(false);
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (error.code) {
+      history.replace({
+        pathname: "/",
+      });
+    }
+  }, [error]);
 
   const handleSearch = () => {
     if (inputSearch != "") {
@@ -31,6 +56,7 @@ const Finder: React.FC<RouteComponentProps> = (props) => {
       <div className="input-container">
         <img src={logo} alt="" />
         <input
+          disabled={isDisabled}
           type="text"
           placeholder="Nunca dejes de buscar"
           value={inputSearch}
@@ -38,7 +64,7 @@ const Finder: React.FC<RouteComponentProps> = (props) => {
           onKeyPress={(e) => (e.key === "Enter" ? handleSearch() : null)}
         />
         <button>
-          <img src={search} onClick={handleSearch} />
+          <img src={searchImg} onClick={handleSearch} />
         </button>
       </div>
     </header>

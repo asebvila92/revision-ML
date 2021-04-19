@@ -11,7 +11,13 @@ export const searchItem = (item: string) => async (dispatch: Dispatch) => {
     const { data }: AxiosResponse = await rest.get(url, { params });
 
     if (data.errorCode) {
-      return dispatch(throwError({ type: "request", code: data.errorCode, message: "" }));
+      return dispatch(
+        throwError({
+          type: "request",
+          code: data.errorCode,
+          message: "No pudimos realizar la busqueda, intenta de nuevo",
+        })
+      );
     }
     const action = { type: SEARCH_ITEM, data: data };
     dispatch(action);
@@ -32,7 +38,7 @@ export const getItemById = async (id: string) => {
     const { data }: AxiosResponse = await rest.get(`${url}${id}`);
 
     if (data.errorCode) {
-      return { type: "request", code: data.errorCode, message: "" };
+      return { type: "request", code: data.errorCode, message: "Parece que el item no esta completo. Busca otro" };
     }
     return data;
   } catch (error) {
